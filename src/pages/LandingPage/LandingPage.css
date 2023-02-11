@@ -1,5 +1,6 @@
 .logo-container{
     display: flex;
+    cursor: pointer;
     margin: 10px;
 }
 
