@@ -1,0 +1,42 @@
+.logo-container{
+    display: flex;
+    margin: 10px;
+}
+
+.logo{
+    width: 50px;
+}
+
+.landing-container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-headline{
+    font-size: 45px;
+    text-align: center;
+}
+
+.landing-cta{
+    background-color: #FFD039;
+    border: 0;
+    color: white;
+    border-radius: 10px;
+    font-size: 24px;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.landing-cta:hover{
+    padding: 12px 20px;
+}
+
+.landing-img{
+    bottom: 0;
+    position: absolute;
+    height: 60vh;
+    width: 80vw;
+}
