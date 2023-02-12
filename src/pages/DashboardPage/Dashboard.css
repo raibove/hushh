@@ -1,0 +1,7 @@
+.dashboard-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 40px;
+    column-gap: 60px;
+}

@@ -1,0 +1,35 @@
+.dashboard-card{
+    border: 1px solid rgba(104, 104, 104, 0.8);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.dashboard-card:hover{
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-card-img-container{
+    background-color: #FFD039;
+    align-items: center;
+}
+
+.dashboard-card-title{
+    background-color: #543B14;
+    min-height: 45px;
+}
+
+.dashboard-card-p{
+    color: white;
+    margin: 0;
+    margin-left: 15px;
+    padding-top: 5px;
+    font-size: 18px;
+}
+
+.dashboard-card-img{
+    object-fit: fill;
+    height: 170px;
+    width: 250px;
+}
