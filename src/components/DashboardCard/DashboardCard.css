@@ -36,12 +36,12 @@
 
 .modal{
     border: none;
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%; 
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);  */
     background-color: #FFD039; 
-    width: 80vw; 
+    width: 40vw; 
     height: 60vh;
     padding: 20px;
 }
@@ -53,4 +53,18 @@
 .modal-description{
     padding: 20px;
     font-size: 22px;
+}
+
+.modal-button{
+    font-size: 18px;
+    padding: 8px 15px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.modal-action{
+    background-color: #FFD039;
+    padding: 20px;
 }

@@ -1,6 +1,9 @@
 import "./DashboardCard.css"
 import Modal from '@mui/material/Modal';
 import { useState } from "react";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
 
 function DashboardCard({imageSrc, altText}) {
     const [open, setOpen] = useState(false);
@@ -17,15 +20,20 @@ function DashboardCard({imageSrc, altText}) {
                 <p className="dashboard-card-p">An interview for job?</p>
             </div>
         </div>
-        <Modal
+        <Dialog
             open={open}
             onClose={handleClose}
         >
-            <div  className="modal">
+            <DialogContent className="modal">
+            <div  >
                 <img src={imageSrc} alt={altText} className="modal-img"/>
                 <span className="modal-description">apple</span>
             </div>
-        </Modal>
+            </DialogContent>
+            <DialogActions className="modal-action">
+                <button className="modal-button">Start</button>
+            </DialogActions>
+        </Dialog>
         </>
     )
 }
