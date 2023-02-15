@@ -1,14 +1,40 @@
 import "./DashboardCard.css"
-import Modal from '@mui/material/Modal';
+
 import { useState } from "react";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import Headphone from '../../assets/headphone.svg'
+import { SpeechRecognition, SpeechRecognitionTranscript } from 'react-speech-kit';
 
 function DashboardCard({imageSrc, altText}) {
     const [open, setOpen] = useState(false);
+    const [audioInput, setAudioInput] = useState(null);
+    const [recognition, setRecognition] = useState(null);
+    const [transcript, setTranscript] = useState('');
+    
+    const [hasHeadphones, setHasHeadphones] = useState(null);
+    
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const startConversation = ()=>{
+        navigator.mediaDevices.enumerateDevices().then((devices)=>{
+            const audioInputs = devices.filter((device) => device.kind === 'audioinput');
+            const audioOutputs = devices.filter((device) => device.kind === 'audiooutput');
+            if(audioInputs.length>0 && audioOutputs.length>0){
+                if(audioInputs[0].groupId === audioOutputs[0].groupId)
+                    setHasHeadphones(false)
+                else
+                    setHasHeadphones(true)
+            }else{
+                setHasHeadphones(false)
+            }
+        }).catch((err) => {
+            console.error(err);
+            setHasHeadphones(false)
+        });
+    }
 
     return (
         <>
@@ -25,15 +51,32 @@ function DashboardCard({imageSrc, altText}) {
             onClose={handleClose}
         >
             <DialogContent className="modal">
-            <div  >
+            <div>
                 <img src={imageSrc} alt={altText} className="modal-img"/>
                 <span className="modal-description">apple</span>
             </div>
             </DialogContent>
             <DialogActions className="modal-action">
-                <button className="modal-button">Start</button>
+                <button className="modal-button" onClick={startConversation}>Start</button>
             </DialogActions>
         </Dialog>
+        {
+            hasHeadphones===false && <div>
+            <Dialog
+                open={open}
+            >
+                <DialogContent className="modal">
+                <div>
+                    <img src={Headphone} alt="headphones" className="headphone-img"/>
+                    <h2 className="headphone-description">Wear your headphones to continue</h2>
+                </div>
+                </DialogContent>
+                <DialogActions>
+                    <button className="modal-button" onClick={startConversation}><b>I have my headphones connected</b></button>
+                </DialogActions>
+            </Dialog>
+            </div>
+        }
         </>
     )
 }

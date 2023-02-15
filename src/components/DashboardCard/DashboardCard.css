@@ -68,3 +68,14 @@
     background-color: #FFD039;
     padding: 20px;
 }
+
+.headphone-img{
+    height: 200px;
+}
+
+.headphone-description{
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-align: center;
+}
