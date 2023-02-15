@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
 import logo from "../../assets/logo.svg"
 import debate from "../../assets/debate.svg"
 import sales_call from "../../assets/sales_call.svg"

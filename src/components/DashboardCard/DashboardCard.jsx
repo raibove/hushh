@@ -6,8 +6,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import Headphone from '../../assets/headphone.svg'
 import { SpeechRecognition, SpeechRecognitionTranscript } from 'react-speech-kit';
+import { useNavigate } from "react-router-dom";
 
 function DashboardCard({imageSrc, altText}) {
+    const navigate = useNavigate()
     const [open, setOpen] = useState(false);
     const [audioInput, setAudioInput] = useState(null);
     const [recognition, setRecognition] = useState(null);
@@ -25,8 +27,11 @@ function DashboardCard({imageSrc, altText}) {
             if(audioInputs.length>0 && audioOutputs.length>0){
                 if(audioInputs[0].groupId === audioOutputs[0].groupId)
                     setHasHeadphones(false)
-                else
+                else{
                     setHasHeadphones(true)
+                    setOpen(false)
+                    navigate('/conversation')
+                }
             }else{
                 setHasHeadphones(false)
             }
@@ -34,6 +39,12 @@ function DashboardCard({imageSrc, altText}) {
             console.error(err);
             setHasHeadphones(false)
         });
+    }
+
+    const setHeadphoneConnected = ()=>{
+        setHasHeadphones(true)
+        setOpen(false)
+        navigate('/conversation')
     }
 
     return (
@@ -72,7 +83,7 @@ function DashboardCard({imageSrc, altText}) {
                 </div>
                 </DialogContent>
                 <DialogActions>
-                    <button className="modal-button" onClick={startConversation}><b>I have my headphones connected</b></button>
+                    <button className="modal-button" onClick={setHeadphoneConnected}><b>I have my headphones connected</b></button>
                 </DialogActions>
             </Dialog>
             </div>

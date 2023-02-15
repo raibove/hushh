@@ -8,6 +8,7 @@ import {
   Link,
 } from "react-router-dom";
 import DashboardPage from './pages/DashboardPage/Dashboard';
+import Conversation from './pages/ConversationPage/Conversation';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <DashboardPage/>,
   },
+  {
+    path: "conversation",
+    element: <Conversation/>
+  }
 ]);
 
 
